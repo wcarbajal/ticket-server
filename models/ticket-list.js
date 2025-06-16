@@ -9,7 +9,7 @@ class TicketList {
   }
 
   get siguienteNumero() {
-    this.ultimoNumero ++;
+    this.ultimoNumero++;
     return this.ultimoNumero;
   }
 
@@ -38,10 +38,6 @@ class TicketList {
     return siguienteTicket;
 
   }
-
-
-
-
 
 }
 
