@@ -9,7 +9,7 @@ class TicketList {
   }
 
   get siguienteNumero() {
-    this.ultimoNumero++;
+    this.ultimoNumero = this.ultimoNumero + 1;
     return this.ultimoNumero;
   }
 
@@ -29,6 +29,7 @@ class TicketList {
     if ( this.pendientes.length === 0 ) {
       return null;
     }
+    
     const siguienteTicket = this.pendientes.shift();
     siguienteTicket.agente = agente;
     siguienteTicket.escritorio = escritorio;

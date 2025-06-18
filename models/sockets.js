@@ -19,10 +19,24 @@ class Sockets {
       console.log( 'Cliente conectado' );
 
       // Escuchar evento: mensaje-to-server
-      socket.on( 'solicitar-ticket', (data, callback) => {
+      socket.on( 'solicitar-ticket', ( _, callback ) => {
         const nuevoTicker = this.ticketList.crearTicket();
-        callback( nuevoTicker )
-      })
+        callback( nuevoTicker );
+      } );
+
+      socket.on( 'siguiente-ticket',  ({agente, escritorio}, callback) =>{
+        const suTicket = this.ticketList.asignarTicket(agente, escritorio)
+        callback(suTicket)
+      } );
+
+       socket.on( 'siguiente-ticket',  ({agente, escritorio}, callback) =>{
+        const suTicket = this.ticketList.asignarTicket(agente, escritorio)
+        callback(suTicket)
+
+
+        this.io.emit( 'ticket-asignado', this.ticketList.ultimos13 )
+      } );
+
 
 
     } );
